@@ -6,6 +6,7 @@ public class Solution {
         Arrays.sort(sArray);
         Arrays.sort(tArray);
         int i;
+        
         for(i=0;i<s.length();i++){
             if(sArray[i]!=tArray[i]){
                 return false;
