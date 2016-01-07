@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+		
+			for(int i=0; i<t;i++){
+	            String s = in.next();
+	            int length = s.length();
+	            int count = 0;
+	            Map<String, Integer> myMap = new HashMap<String, Integer>();
+	            Map<String,Integer> elementCount = new HashMap<String,Integer>();
+	            for(int j=1;j<length;j++){
+	                for(int k=0;k<length-(j-1);k++){
+	                    String st = s.substring(k, k+j);
+	                    char[] cr = st.toCharArray();
+	                    Arrays.sort(cr);
+	                    String subString = new String(cr);
+	                    if(myMap.containsKey(subString)){
+	                        int n = myMap.get(subString);
+	                        int p = elementCount.get(subString);
+	                        if(n==0){
+	                        n = n+1;
+	                        p += 1;
+	                        }else{
+	                            n = n+p;
+	                            p+=1;
+	                        }
+	                        myMap.put(subString, n);
+	                        elementCount.put(subString, p);
+	                    }else{
+	                        myMap.put(subString, 0);
+	                        elementCount.put(subString, 1);
+	                    }
+	                }
+	            }
+	            for(String key: myMap.keySet()){
+	                count =  count+ myMap.get(key);
+	            }
+	            System.out.println(count);
+			}
+        
+    }
+}
